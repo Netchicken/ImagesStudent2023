@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="card" style=" margin-top: 20px">
+    <div class="card-header">
+        <h1>Add Your Title</h1>
+        <h3>Header</h3>
+        <p class="card-text">Add stuff here</p>
+    </div>
+    <div class="card-body">
+        <h3>Body</h3>
+
+        <form method="post">
+            <div class="form-group">
+                <div class="row">
+                    I want to see:
+                    <select asp-for="ImagePath" asp-items="@(new SelectList(Model.ImagePathList))">
+                        <option selected="selected" disabled="disabled" value="">Select a face</option>
+                        <option  value= "photo1.png">Random Face</option>
+                    </select>
+
+                </div>
+
+                <div class="row">
+                    <input type="submit" value="Submit" asp-action="Index" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <h3>The Generated Face</h3>
+
+        <div class="row">
+            <img src="~/images/@Model.ImagePath" class="card-img-top img-fluid img-thumbnail rounded mx-auto d-block" />
+        </div>
+    </div>
+</div>
+
+
